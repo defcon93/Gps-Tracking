@@ -61,7 +61,7 @@ public class MainActivity extends AppCompatActivity implements ConnectionCallbac
         Firebase.setAndroidContext(this);
         setContentView(R.layout.activity_main);
         gps = (TextView) findViewById(R.id.gps);
-        myFirebaseRef = new Firebase("https://luminous-torch-6299.firebaseio.com/");
+        
 
 
          tm = (TelephonyManager) getSystemService(TELEPHONY_SERVICE);
@@ -190,28 +190,27 @@ public class MainActivity extends AppCompatActivity implements ConnectionCallbac
                 .getLastLocation(mGoogleApiClient);
         gps.setText("" + mLastLocation.getLatitude() + "," + mLastLocation.getLongitude());
         String deviceID = tm.getDeviceId();
-       String url = "http://doodlebluestaging.com/misapp/location.php?action=updateTruckLocation&deviceId="+deviceID+"&lat="+mLastLocation.getLatitude()+"&lon="+mLastLocation.getLongitude();
-        new AsyncCall().execute(url);
+        //new AsyncCall().execute(url);
         //Firebase lat = myFirebaseRef.child(deviceID).child("lat");
        //Firebase lon= myFirebaseRef.child(deviceID).child("lon");
         //lon.setValue("" + mLastLocation.getLongitude());
         //lat.setValue("" + mLastLocation.getLatitude());
     }
 
-    private class AsyncCall extends AsyncTask<String, Void, Void> {
+    /*private class AsyncCall extends AsyncTask<String, Void, Void> {
         protected Void doInBackground(String... urls) {
 
             makeGetRequest(urls[0]);
 
             return null;
-        }
+        }*/
 
 
 
 
     }
 
-    private void makeGetRequest(String url) {
+    /*private void makeGetRequest(String url) {
 
         HttpClient client = new DefaultHttpClient();
         HttpGet request = new HttpGet(url);
@@ -230,7 +229,7 @@ public class MainActivity extends AppCompatActivity implements ConnectionCallbac
             e.printStackTrace();
         }
 
-    }
+    }*/
 
     @Override
     public void onConnectionFailed(ConnectionResult connectionResult) {
